@@ -1,30 +1,18 @@
 import React from "react"
 import './style.css'
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({ todos, deletTask, updateTask, toggleTask }) => {
 
   const onCompleted = ({ id }) => {
-    const targetTodo = todos.map((item) => {
-      return {
-        ...item,
-        completed: item.id === id ? !item.completed : item.completed,
-      }
-    })
-    setTodos(targetTodo)
+    toggleTask(id)
   }
 
   const onEdit = (e, id) => {
-    const targetTodo = todos.map((item) => {
-      return {
-        ...item,
-        title: item.id === id ? e.target.value : item.title,
-      }
-    })
-    setTodos(targetTodo)
+    updateTask(id, e.target.value)
   }
 
   const onRemove = ({ id }) => {
-    setTodos(todos.filter((item) => item.id !== id))
+    deletTask(id)
   }
 
   return (

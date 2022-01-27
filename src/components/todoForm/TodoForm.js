@@ -1,88 +1,86 @@
 import React, { useState } from "react"
-import './style.css'
 import { TodoList } from "./TodoList"
 import { v4 as uuidv4 } from "uuid"
+import './style.css'
 
-export const TodoForm = ({ todo, setTodo, todos, setTodos }) => {
+export const TodoForm = ({
+  todo,
+  todos,
+  addTask,
+  deletTask,
+  deletAllTask,
+  updateTask,
+  toggleTask,
+  toggleAllTaskComplete,
+  toggleAllTaskUncomplete,
+  setTodo,
+  filter,
+}) => {
 
-  const [filterType, setFilterType] = useState("all")
   const todoLeft = todos.filter((item) => item.completed === false)
 
+  const [isCompleted, changeCompleted] = useState(true)
+
   const onAllCompleted = () => {
-    const targetTodo = todos.map((item) => {
-      return {
-        ...item,
-        completed: item.completed === false ? true : false,
-      }
-    })
-    setTodos(targetTodo)
-    console.log(todos)
+    changeCompleted(!isCompleted)
+    if (isCompleted) {
+      toggleAllTaskComplete()
+      return
+    }
+    toggleAllTaskUncomplete()
   }
 
   const inputChange = (e) => {
     setTodo(e.target.value)
   }
 
-  const onKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      console.log(1)
-      setTodos([...todos, { id: uuidv4(), title: todo, completed: false, show: true }])
-      setTodo("")
-    }
+  const handleSubmit = (e) => {
+    addTask(uuidv4(), todo)
+    setTodo("")
+    e.preventDefault();
   }
 
   const showAll = () => {
-    setFilterType('all')
+    filter('all')
   }
 
   const showActive = () => {
-    setFilterType('active')
+    filter('active')
   }
 
   const showCompleted = () => {
-    setFilterType('completed')
+    filter('completed')
   }
-
-  const getTodos = () => {
-    switch (filterType) {
-      case "all": {
-        return todos
-      }
-
-      case "active": {
-        return todos.filter((item) => !item.completed)
-      }
-
-      case "completed": {
-        return todos.filter((item) => item.completed)
-      }
-    }
-  }
-
 
   const onClear = () => {
-    setTodos(todos.filter((item) => item.completed === false))
+    const deleted = todos.map((item) => {
+      if (item.completed === true) {
+        return item
+      }
+    })
+    deletAllTask(deleted)
   }
-
-  const filtredTodos = getTodos()
 
   return (
     <div className="todo-form">
       <div className="todo-form__input">
         <button className="compliteAllBtn" onClick={onAllCompleted}>❯</button>
-        <input
-          type="text"
-          placeholder="What needs to be done?"
-          value={todo}
-          onChange={inputChange}
-          onKeyDown={onKeyDown}
-          className="todoInput"
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="What needs to be done?"
+            value={todo}
+            onChange={inputChange}
+            className="todoInput"
+          />
+        </form>
       </div>
       <div className="todo-form__list">
         <TodoList
-          todos={filtredTodos}
-          setTodos={setTodos}
+          todos={todos}
+          deletTask={deletTask}
+          updateTask={updateTask}
+          toggleTask={toggleTask}
         />
       </div>
       <div className="todo-form__filters">
