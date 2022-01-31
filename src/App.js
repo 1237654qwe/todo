@@ -1,31 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { Header } from './components/header/Header'
-import './App.css'
-import { TodoForm } from './components/todoForm/TodoForm'
+import React from 'react';
+
+import { Header } from './components/Header/Header';
+import { TodoContainer } from './components/TodoContainer/TodoContainer'
+
+import './App.css';
 
 const App = () => {
-  const [todo, setTodo] = useState("")
-  const [todos, setTodos] = useState([])
-
   return (
-    <div className='container'>
-      <div className='container__header'>
+    <div className="container">
+      <div className="container__header">
         <Header />
       </div>
-      <div className='container__todo'>
-        <TodoForm
-          todo={todo}
-          setTodo={setTodo}
-          todos={todos}
-          setTodos={setTodos}
-        />
+      <div className="container__todo">
+        <TodoContainer />
       </div>
-      <div className='container__footer'>
+      <div className="container__footer">
         <p>Click to edit a todo</p>
         <p>Created by Kukharenko Danil</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
