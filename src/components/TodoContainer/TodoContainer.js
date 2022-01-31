@@ -10,13 +10,13 @@ export const TodoContainer = () => {
 
   return (
     <div className="containe">
-      <div className="container__todoForm">
+      <div className="container__todo-form">
       <TodoForm />
       </div>
-      <div className="container__todoList">
+      <div className="container__todo-list">
       <TodoList />
       </div>
-      <div className="container__todoFilter">
+      <div className="container__todo-filter">
       <TodoFilter />
       </div>
     </div>
