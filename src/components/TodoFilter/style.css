@@ -1,0 +1,61 @@
+.todo-form__filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.filter-info {
+  color: rgb(83, 83, 83);
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn {
+  margin-left: 10px;
+  outline: none;
+  border: none; 
+  background: white;
+  color: rgb(83, 83, 83);
+}
+
+.btn:hover {
+  background: rgba(0.003, 0.003, 0.003, 0.003);
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%);
+}
+
+.active {
+  margin-left: 10px;
+  outline: none;
+  border: none; 
+  background: white;
+  color: rgb(83, 83, 83);
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%), 0 2px 2px 0 rgb(0 0 0 / 10%);
+}
+
+@media screen and (max-width: 500px) {  
+  .todo-form__filters {
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .filter-info {
+    color: rgb(83, 83, 83);
+    font-size: 15px;
+  }
+  
+  .filter-btn {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }  
+}

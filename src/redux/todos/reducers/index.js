@@ -8,7 +8,7 @@ import {
   TOGGLE_ALL_TODO_UNCOMPLETE,
   SET_FILTER,
   CHANGE_TODO_INPUT,
-} from "../types"
+} from "../types";
 
 const INITIAL_STATE = {
   todo: "",

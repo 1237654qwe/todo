@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import rootReducer from './redux/rootReducers';
 
+import rootReducer from './rootReducer';
 
 const configureStore = (initialState = {}) => {
   return import('redux-devtools-extension').then(({ composeWithDevTools }) => {

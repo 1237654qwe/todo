@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 export const getTodosByFilter = ({ todosReducers: { todos, filterType } }) => {
   switch (filterType) {
@@ -16,4 +16,4 @@ export const getTodosByFilter = ({ todosReducers: { todos, filterType } }) => {
   }
 }
 
-export const getTodosSelector = createSelector(getTodosByFilter, todos => todos)
+export const getTodosSelector = createSelector(getTodosByFilter, todos => todos);
